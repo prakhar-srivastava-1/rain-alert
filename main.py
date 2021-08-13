@@ -1,13 +1,17 @@
-import requests
-from secrets import API_KEY
+from data import WeatherData
+from message_client import MessageClient
 
-owm_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-parameters = {
-    'lat': '22.17',
-    'lon': '76.06',
-    'appid': API_KEY,
-}
 
-response = requests.get(owm_endpoint, params=parameters)
-response.raise_for_status()
-print(response.status_code)
+# weather_data = WeatherData()
+# weather_codes = weather_data.weather_data
+# print(weather_codes)
+#
+#
+# # check if its raining
+# for code in weather_codes:
+#     if code < 700:
+#         print("It's raining")
+#         break
+
+message_client = MessageClient()
+message_client.send_alert()
