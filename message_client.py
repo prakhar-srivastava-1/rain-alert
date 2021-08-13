@@ -8,12 +8,13 @@ class MessageClient:
         self.account_sid = TWILIO_ACCOUNT_SID
         self.phone = TWILIO_PHONE
         self.auth_token = TWILIO_AUTH_TOKEN
+        self.my_phone = MY_PHONE
         self.client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
     def send_alert(self):
         message = self.client.messages.create(
-            body="It is raining.",
-            from_=TWILIO_PHONE,
-            to=MY_PHONE
+            body="It is going to rain today. Remember to bring an umbrella.",
+            from_=self.phone,
+            to=self.my_phone
         )
-        print(message.sid)
+        print(message.status)
